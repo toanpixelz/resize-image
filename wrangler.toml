@@ -1,0 +1,17 @@
+name = "image-resizer-worker"
+main = "dist/main.js"
+compatibility_date = "2024-08-27"
+
+# Liên kết Worker với R2 bucket
+[[r2_buckets]]
+binding = "SOURCE_BUCKET" # Tên binding để truy cập trong code (không dùng trực tiếp trong code này)
+bucket_name = "source-images"
+preview_bucket_name = "source-images"
+
+[[r2_buckets]]
+binding = "DESTINATION_BUCKET"
+bucket_name = "resized-images"
+preview_bucket_name = "resized-images"
+
+# Queue configuration removed - not available on free tier
+# Instead, use direct HTTP endpoints to trigger image processing
